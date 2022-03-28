@@ -1,0 +1,17 @@
+.errors {
+    color: red;
+    padding-left: 50px;
+    font-size: 14px;
+}
+.nav ul li a.active {
+    background-color: #05aeab;
+    color: white;
+}
+.course .wrap .bottom .teacher .avatar{
+    min-width: 36px;
+    height: 36px;
+    img{
+        object-fit: cover;
+        height: 100%;
+    }
+}
