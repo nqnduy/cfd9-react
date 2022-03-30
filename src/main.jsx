@@ -5,11 +5,14 @@ import "./assets/dest/style.min.css";
 import "./assets/dest/fonts.css";
 import "./assets/dest/stylelibs.min.css";
 import { BrowserRouter } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
 
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
-            <App />
+            <AuthProvider>
+                <App />
+            </AuthProvider>
         </BrowserRouter>
     </React.StrictMode>,
     document.getElementById("root")

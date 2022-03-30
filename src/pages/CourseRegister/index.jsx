@@ -15,7 +15,7 @@ export default function Register() {
     const { data: detail } = useQuery(
         async () => {
             const res = await courseService.getDetail(id);
-            if (res.data.data) {
+            if (res.data) {
                 return res;
             } else {
                 navigate(HOME_PATH);

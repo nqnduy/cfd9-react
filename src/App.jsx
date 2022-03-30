@@ -18,7 +18,8 @@ import ProfileProject from "./pages/Profile/Project";
 import style from "./assets/style/style.scss";
 import { Route, Routes } from "react-router-dom";
 import axios from "axios";
-import { COURSE_DETAIL_PATH, COURSE_REGISTER_PATH, HOME_PATH } from "./constants/path";
+import { COURSE_DETAIL_PATH, COURSE_REGISTER_PATH, HOME_PATH, LOGIN_PATH } from "./constants/path";
+import Login from "./pages/Login";
 
 function App() {
     return (
@@ -29,6 +30,7 @@ function App() {
             <Routes>
                 <Route element={<MainLayout />}>
                     <Route path={HOME_PATH} element={<Home />} />
+                    <Route path={LOGIN_PATH} element={<Login />}></Route>
                     <Route path={COURSE_REGISTER_PATH} element={<CourseRegister />} />
                     <Route path="/khoa-hoc" element={<Course />} />
                     <Route path={COURSE_DETAIL_PATH} element={<CourseDetail />} />
@@ -52,13 +54,3 @@ function App() {
 }
 
 export default App;
-
-// // axios.get("http://cfd-reactjs.herokuapp.com/elearning/v4/courses")
-// //     .then(res => {
-// //         console.log(res);
-// //     })
-
-// axios.get("http://cfd-reactjs.herokuapp.com/elearning/v4/courses")
-//     .then(res => {
-//         console.log(res);
-//     })

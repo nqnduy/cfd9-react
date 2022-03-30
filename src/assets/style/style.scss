@@ -7,11 +7,26 @@
     background-color: #05aeab;
     color: white;
 }
-.course .wrap .bottom .teacher .avatar{
+.course .wrap .bottom .teacher .avatar {
     min-width: 36px;
     height: 36px;
-    img{
+    img {
         object-fit: cover;
         height: 100%;
     }
+}
+.register-course .wrap label textarea,
+.register-course .wrap label input[type="password"] {
+    flex: 1;
+    height: 58px;
+    padding: 0 20px;
+    outline: none;
+    border: 1px solid #dbe0df;
+    font-family: main;
+    font-size: 16px;
+}
+
+.register-course .wrap .btn {
+    outline: none;
+    border: none;
 }

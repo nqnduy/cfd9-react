@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import useQuery from "../../../hooks/useQuery";
+import { homeService } from "../../../services/home";
 
 function Gallery() {
     const { data: gallary } = useQuery(() => homeService.gallery(), []);

@@ -7,14 +7,15 @@ import { currency } from "../../ultis/number";
 import { convertDate } from "../../ultis/date";
 import Teacher from "./components/Teacher";
 import useQuery from "../../hooks/useQuery";
+import Skeleton from "@mui/material/Skeleton";
 export default function CourseDetail() {
     const { id } = useParams();
     const navigate = useNavigate();
     const registerPath = generatePath(COURSE_REGISTER_PATH, { id });
-    const { data: detail } = useQuery(
+    const { data: detail, loading } = useQuery(
         async () => {
             const res = await courseService.getDetail(id);
-            if (res.data.data) {
+            if (res.data) {
                 return res;
             } else {
                 navigate(HOME_PATH);
@@ -30,15 +31,21 @@ export default function CourseDetail() {
             <section className="banner style2" style={{ "--background": detail.template_color_banner }}>
                 <div className="container">
                     <div className="info">
-                        <h1>Thực Chiến {detail.title}</h1>
-                        <div className="row">
-                            <div className="date">
-                                <strong>Khai giảng:</strong> {convertDate(detail.opening_time)}
+                        {loading ? <Skeleton width={"100%"} height={120} /> : <h1>Thực Chiến {detail.title}</h1>}
+
+                        {loading ? (
+                            <Skeleton variant="text" width={"50%"} />
+                        ) : (
+                            <div className="row">
+                                <div className="date">
+                                    <strong>Khai giảng:</strong> {convertDate(detail.opening_time)}
+                                </div>
+                                <div className="time">
+                                    <strong>Thời lượng:</strong> 18 buổi
+                                </div>
                             </div>
-                            <div className="time">
-                                <strong>Thời lượng:</strong> 18 buổi
-                            </div>
-                        </div>
+                        )}
+
                         <Link className="btn white round" to={registerPath} style={{ "--color-btn": detail.template_color_btn }}>
                             đăng ký
                         </Link>
@@ -52,21 +59,25 @@ export default function CourseDetail() {
                             </div>{" "}
                             <span>giới thiệu</span>
                         </div>
-                        <div className="money">{currency(detail.money)} VND</div>
+                        {loading ? <Skeleton variant="text" width={"12%"} /> : <div className="money">{currency(detail.money)} VND</div>}
                     </div>
                 </div>
             </section>
             <section className="section-2">
                 <div className="container">
-                    <p className="des">{detail.long_description}</p>
+                    {loading ? <Skeleton width={"100%"} height={308} /> : <p className="des">{detail.long_description}</p>}
                     <h2 className="title">giới thiệu về khóa học</h2>
                     <div className="cover">
                         <img src="/img/course-detail-img.png" alt="" />
                     </div>
                     <h3 className="title">nội dung khóa học</h3>
-                    {detail.content?.map((e, i) => (
-                        <CourseAccordion key={i} index={i + 1} {...e} />
-                    ))}
+                    {loading
+                        ? [...Array(18)].map((_, i) => (
+                              <div key={i} style={{ marginBottom: 4 }}>
+                                  <Skeleton width={"100%"} height={92} />
+                              </div>
+                          ))
+                        : detail.content?.map((e, i) => <CourseAccordion key={i} index={i + 1} {...e} />)}
                     <h3 className="title">yêu cầu cần có</h3>
                     <div className="row row-check">
                         {detail.required?.map((e) => (

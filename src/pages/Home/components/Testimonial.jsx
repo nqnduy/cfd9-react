@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import useQuery from "../../../hooks/useQuery";
+import { homeService } from "../../../services/home";
 function Testimonial() {
     const { data: review } = useQuery(() => homeService.review(), []);
 
