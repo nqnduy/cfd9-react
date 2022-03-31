@@ -8,6 +8,8 @@ const api = axios.create({
 api.interceptors.response.use((res) => {
     return res.data
 }, (error) => { return error.response.data })
+/** -WARNING-  #ERROR403: Handling the return error to get the message containing the error */
+
 api.interceptors.request.use((config) => {
     let token = localStorage.getItem(TOKEN_STORAGE_KEY)
     if (token) {

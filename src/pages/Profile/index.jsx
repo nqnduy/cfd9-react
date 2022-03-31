@@ -4,18 +4,20 @@ import Course from "./Course";
 import Project from "./Project";
 import Payment from "../Payment";
 import Coin from "../Coin";
-import { NavLink, Link, Outlet } from "react-router-dom";
+import { NavLink, Link, Outlet, Navigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import { HOME_PATH } from "../../constants/path";
 
 export default function Profile({ path }) {
     const { user } = useContext(AuthContext);
+
+    if (!user) return <Navigate to={HOME_PATH} />;
 
     return (
         <main className="profile" id="main">
             <section>
                 <div className="top-info">
                     <div className="avatar">
-                        {/* <span className="text">H</span> */}
                         <img src={user.avatar} alt="" />
                         <div className="camera" />
                     </div>

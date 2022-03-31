@@ -1,11 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { HOME_PATH } from "../../constants/path";
 
 export default function Information() {
     const navigate = useNavigate();
 
     const onClick = () => {
-        navigate("/");
+        navigate(HOME_PATH);
     };
     return (
         <div className="tab1">

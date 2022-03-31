@@ -10,8 +10,7 @@ import CTA from "./components/CTA";
 import useQuery from "../../hooks/useQuery";
 import { homeService } from "../../services/home";
 export default function Home() {
-    const { data: courses } = useQuery(() => courseService.getList(), []); // useQuery(courseService.getList(), [])
-
+    const { data: courses } = useQuery(() => courseService.getList(), []);
     return (
         <main className="homepage" id="main">
             <Banner />
