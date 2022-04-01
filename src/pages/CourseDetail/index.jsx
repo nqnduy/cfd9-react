@@ -71,13 +71,19 @@ export default function CourseDetail() {
                         <img src="/img/course-detail-img.png" alt="" />
                     </div>
                     <h3 className="title">nội dung khóa học</h3>
-                    {loading
-                        ? [...Array(18)].map((_, i) => (
-                              <div key={i} style={{ marginBottom: 4 }}>
-                                  <Skeleton width={"100%"} height={92} />
-                              </div>
-                          ))
-                        : detail.content?.map((e, i) => <CourseAccordion key={i} index={i + 1} {...e} />)}
+                    {loading ? (
+                        [...Array(18)].map((_, i) => (
+                            <div key={i} style={{ marginBottom: 4 }}>
+                                <Skeleton width={"100%"} height={92} />
+                            </div>
+                        ))
+                    ) : (
+                        <CourseAccordion.Func>
+                            {detail.content?.map((e, i) => (
+                                <CourseAccordion key={i} index={i + 1} {...e} />
+                            ))}
+                        </CourseAccordion.Func>
+                    )}
                     <h3 className="title">yêu cầu cần có</h3>
                     <div className="row row-check">
                         {detail.required?.map((e) => (

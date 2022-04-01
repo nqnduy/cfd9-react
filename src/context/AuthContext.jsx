@@ -7,7 +7,7 @@ import userService from "../services/user";
  *  Example : export const AuthContext = createContext({user: "abc"}) */
 export const AuthContext = createContext();
 
-/** -EXPLAIN-  Keeping the data when page re-render - get the data in localStorage at step (✨) */
+/** -EXPLAIN-  Keeping the data when page re-render */
 let _user = localStorage.getItem(USER_STORAGE_KEY);
 if (_user) {
     _user = JSON.parse(_user);
@@ -18,10 +18,10 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         if (user) {
-            /**  (💡)  - [Logged in] - Has user's info -> setItem user token into localStorage (✨)*/
+            /**  (💡)  - [Logged in] - Has user's info */
             localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
         } else {
-            /**  (💡)  - [Logged out] - User info = undefined -> removeItem data into localStorage */
+            /**  (💡)  - [Logged out] - User info = undefined */
             localStorage.removeItem(USER_STORAGE_KEY);
             localStorage.removeItem(TOKEN_STORAGE_KEY);
         }
@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
             return res.message;
         }
 
-        /**  (💡)  - [Default] - Has data api -> setItem data into localStorage */
+        /**  (💡)  - [Default] - Adding data api into localStorage */
         localStorage.setItem(TOKEN_STORAGE_KEY, JSON.stringify(res.data));
 
         const user = await userService.getInfo();
