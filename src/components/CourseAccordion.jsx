@@ -24,9 +24,7 @@ CourseAccordion.Func = ({ children }) => {
     };
     return (
         <Context.Provider value={{ numOpen }}>
-            {React.Children.map(children, (child, i) => {
-                return React.cloneElement(child, { position: i, onClick: onClick(i) });
-            })}
+            {React.Children.map(children, (child, i) => React.cloneElement(child, { position: i, onClick: onClick(i) }))}
         </Context.Provider>
     );
 };

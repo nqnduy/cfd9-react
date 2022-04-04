@@ -41,7 +41,7 @@ export default function Navigation() {
                     </li>
                 </ul>
             </nav>
-            <div class="overlay_nav" onClick={close}></div>
+            <div className="overlay_nav" onClick={close}></div>
         </>
     );
 }

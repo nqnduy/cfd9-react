@@ -45,11 +45,11 @@ export default function Header() {
                             </div>
                         </div>
                     ) : (
-                        <div class="not-login bg-none">
-                            <Link to={LOGIN_PATH} class="btn-register">
+                        <div className="not-login bg-none">
+                            <Link to={LOGIN_PATH} className="btn-register">
                                 Đăng nhập
                             </Link>
-                            <a href="login.html" class="btn main btn-open-login">
+                            <a href="login.html" className="btn main btn-open-login">
                                 Đăng ký
                             </a>
                         </div>
